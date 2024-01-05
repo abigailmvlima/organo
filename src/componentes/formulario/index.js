@@ -11,7 +11,7 @@ const Formulario = () => {
     "Devops",
     "Ux e Design",
     "Mobile",
-    "Inivação e Gestão",
+    "Inovação e Gestão",
   ];
 
   return (
