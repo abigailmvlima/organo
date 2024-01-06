@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Botao from "../botao";
 import CampoTexto from "../campoTexto";
 import ListaSuspensa from "../listaSuspensa";
@@ -14,9 +15,14 @@ const Formulario = () => {
     "Inovação e Gestão",
   ];
 
+  const [nome, setNome] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [imagem, setImagem] = useState("");
+  const [time, setTime] = useState("");
+
   const aoSalvar = (evento) => {
     evento.preventDefault();
-    console.log("Form foi submetido");
+    console.log("Form foi submetido", nome, cargo, imagem);
   };
 
   return (
@@ -27,14 +33,29 @@ const Formulario = () => {
           obrigatorio={true}
           label="Nome"
           placeholder="Digite seu nome"
+          valor={nome}
+          aoAlterado={(valor) => setNome(valor)}
         />
         <CampoTexto
           obrigatorio={true}
           label="Cargo"
           placeholder="Digite seu cargo"
+          valor={cargo}
+          aoAlterado={(valor) => setCargo(valor)}
         />
-        <CampoTexto label="Imagem" placeholder="Digite o endere seu nome" />
-        <ListaSuspensa obrigatorio={true} label="Time" itens={times} />
+        <CampoTexto
+          label="Imagem"
+          placeholder="Digite o endere seu nome"
+          valor={imagem}
+          aoAlterado={(valor) => setImagem(valor)}
+        />
+        <ListaSuspensa
+          obrigatorio={true}
+          label="Time"
+          itens={times}
+          valor={time}
+          aoAlterado={(valor) => setImagem(valor)}
+        />
         <Botao>Criar card</Botao>
       </form>
     </section>
