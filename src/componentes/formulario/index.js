@@ -4,13 +4,13 @@ import CampoTexto from "../campoTexto";
 import ListaSuspensa from "../listaSuspensa";
 import "./Formulario.css";
 
-const Formulario = () => {
+const Formulario = (props) => {
   const times = [
     "Programação",
     "Front-End",
     "Data Science",
     "Devops",
-    "Ux e Design",
+    "UX e Design",
     "Mobile",
     "Inovação e Gestão",
   ];
@@ -22,7 +22,12 @@ const Formulario = () => {
 
   const aoSalvar = (evento) => {
     evento.preventDefault();
-    console.log("Form foi submetido", nome, cargo, imagem);
+    props.aoColaboradorCadastrado({
+      nome,
+      cargo,
+      imagem,
+      time,
+    });
   };
 
   return (
@@ -45,7 +50,7 @@ const Formulario = () => {
         />
         <CampoTexto
           label="Imagem"
-          placeholder="Digite o endere seu nome"
+          placeholder="Digite o endereço da imagem"
           valor={imagem}
           aoAlterado={(valor) => setImagem(valor)}
         />
@@ -54,9 +59,9 @@ const Formulario = () => {
           label="Time"
           itens={times}
           valor={time}
-          aoAlterado={(valor) => setImagem(valor)}
+          aoAlterado={(valor) => setTime(valor)}
         />
-        <Botao>Criar card</Botao>
+        <Botao>Criar Card</Botao>
       </form>
     </section>
   );

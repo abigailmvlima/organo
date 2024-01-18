@@ -1,11 +1,23 @@
-import Banner from './componentes/banner/index.js';
-import Formulario from './componentes/formulario/index.js';
+import { useState } from "react";
+import Banner from "./componentes/banner";
+import Formulario from "./componentes/formulario";
 
 function App() {
+  const [colaboradores, setColaboradores] = useState([]);
+
+  const aoNovoColaboradorAdicionado = (colaborador) => {
+    console.log(colaborador);
+    setColaboradores([...colaboradores, colaborador]);
+  };
+
   return (
-    <div className='App'>
+    <div className="App">
       <Banner />
-      <Formulario />
+      <Formulario
+        aoColaboradorCadastrado={(colaborador) =>
+          aoNovoColaboradorAdicionado(colaborador)
+        }
+      />
     </div>
   );
 }
